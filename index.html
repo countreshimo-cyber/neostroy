@@ -625,14 +625,14 @@
                 <div class="contact-info">
                     <span>📍 Ростов-на-Дону</span>
                     <span>📞 +7 (___) ___-__-__</span>
-                    <span>✉️ info@neostroy.net</span>
+                    <span>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59c9b939ab59b909a8681879a8cdb9b9081">[email&#160;protected]</a></span>
                 </div>
                 <div>Работаем с 2007 года</div>
             </div>
         </div>
         <div class="header-main">
             <div class="container">
-                <a href="/" class="logo">Нео<span>Строй</span></a>
+                <a href="index.html" class="logo">Нео<span>Строй</span></a>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Открыть меню">☰</button>
                 <nav>
                     <ul>
@@ -653,11 +653,11 @@
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <a href="/" class="logo">Нео<span>Строй</span></a>
+            <a href="index.html" class="logo">Нео<span>Строй</span></a>
             <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Закрыть меню">×</button>
         </div>
         <ul>
-            <li><a href="/" onclick="toggleMobileMenu()">Главная</a></li>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Главная</a></li>
             <li><a href="services.html" onclick="toggleMobileMenu()">Услуги</a></li>
             <li><a href="/portfolio" onclick="toggleMobileMenu()">Наши работы</a></li>
             <li><a href="/catalog" onclick="toggleMobileMenu()">Каталог</a></li>
@@ -669,7 +669,7 @@
         <div class="mobile-contact-info">
             <div>📍 Ростов-на-Дону</div>
             <div>📞 +7 (___) ___-__-__</div>
-            <div>✉️ info@neostroy.net</div>
+            <div>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a03040c052a040f05191e18051344040f1e">[email&#160;protected]</a></div>
             <div>🕒 Работаем с 2007 года</div>
         </div>
     </div>
@@ -857,7 +857,7 @@
                     <ul>
                         <li>г. Ростов-на-Дону</li>
                         <li>Телефон: +7 (___) ___-__-__</li>
-                        <li>Email: info@neostroy.net</li>
+                        <li>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e68f888089a6888389959294899fc8888392">[email&#160;protected]</a></li>
                         <li>Режим работы: Пн-Пт 9:00-18:00</li>
                     </ul>
                 </div>
@@ -876,7 +876,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMobileMenu() {
             const mobileNav = document.getElementById('mobileNav');
             mobileNav.classList.toggle('active');
@@ -884,20 +884,4 @@
             // Prevent body scroll when menu is open
             if (mobileNav.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        }
-
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const mobileNav = document.getElementById('mobileNav');
-                if (mobileNav.classList.contains('active')) {
-                    toggleMobileMenu();
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+         

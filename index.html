@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НеоСтрой - Промышленные бетонные полы | Ростов-на-Дону</title>
+    <meta name="description" content="Устройство промышленных бетонных полов под ключ. Опыт более 300 000 м². Работаем по всей России с 2007 года.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #24527A;
+            --secondary-color: #24527A;
+            --accent-color: #5499C7;
+            --text-dark: #24527A;
+            --text-light: #5499C7;
+            --bg-light: #EBF5FB;
+            --bg-lighter: #D4E6F1;
+            --white: #ffffff;
+            --border-color: #D4E6F1;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-top {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-main {
+            padding: 20px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="white" opacity="0.03"/></svg>');
+            background-size: 50px 50px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            max-width: 700px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #3d7ba8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(84, 153, 199, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--white);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #5f6368;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #5f6368;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: #5f6368;
+            line-height: 1.7;
+        }
+
+        /* Services Preview */
+        .services-preview {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .service-item {
+            padding: 25px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            border-color: var(--accent-color);
+            background: var(--bg-light);
+        }
+
+        .service-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .service-item p {
+            color: #5f6368;
+            font-size: 15px;
+        }
+
+        .view-all {
+            text-align: center;
+        }
+
+        /* Geography Section */
+        .geography {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .geography-content {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .geography h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .geography p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .regions-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .region-tag {
+            padding: 8px 18px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            /* Hide desktop header top on mobile */
+            .header-top {
+                display: none;
+            }
+
+            .header-main {
+                padding: 15px 0;
+            }
+
+            .header-main .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            /* Show mobile menu toggle */
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            /* Hide desktop navigation */
+            nav {
+                display: none;
+            }
+
+            /* Mobile navigation styles */
+            .mobile-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--white);
+                z-index: 9999;
+                overflow-y: auto;
+            }
+
+            .mobile-nav.active {
+                display: block;
+            }
+
+            .mobile-nav-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .mobile-nav-close {
+                background: none;
+                border: none;
+                font-size: 32px;
+                color: var(--primary-color);
+                cursor: pointer;
+                padding: 5px;
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                padding: 20px;
+            }
+
+            .mobile-nav ul li {
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .mobile-nav ul li a {
+                display: block;
+                padding: 18px 0;
+                color: var(--text-dark);
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            .mobile-contact-info {
+                padding: 20px;
+                background: var(--bg-light);
+                margin: 20px;
+                border-radius: 8px;
+            }
+
+            .mobile-contact-info div {
+                padding: 10px 0;
+                font-size: 14px;
+                color: var(--text-dark);
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .geography-content {
+                padding: 30px 20px;
+            }
+
+            .features {
+                padding: 50px 0;
+            }
+
+            .services-preview {
+                padding: 50px 0;
+            }
+
+            .geography {
+                padding: 50px 0;
+            }
+
+            .cta-section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span>📍 Ростов-на-Дону</span>
+                    <span>📞 +7 (___) ___-__-__</span>
+                    <span>✉️ info@neostroy.net</span>
+                </div>
+                <div>Работаем с 2007 года</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="/" class="logo">Нео<span>Строй</span></a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Открыть меню">☰</button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="/portfolio">Наши работы</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/certificates">Сертификаты</a></li>
+                        <li><a href="/articles">Статьи</a></li>
+                        <li><a href="/news">Новости</a></li>
+                        <li><a href="/contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="/" class="logo">Нео<span>Строй</span></a>
+            <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Закрыть меню">×</button>
+        </div>
+        <ul>
+            <li><a href="/" onclick="toggleMobileMenu()">Главная</a></li>
+            <li><a href="services.html" onclick="toggleMobileMenu()">Услуги</a></li>
+            <li><a href="/portfolio" onclick="toggleMobileMenu()">Наши работы</a></li>
+            <li><a href="/catalog" onclick="toggleMobileMenu()">Каталог</a></li>
+            <li><a href="/certificates" onclick="toggleMobileMenu()">Сертификаты</a></li>
+            <li><a href="/articles" onclick="toggleMobileMenu()">Статьи</a></li>
+            <li><a href="/news" onclick="toggleMobileMenu()">Новости</a></li>
+            <li><a href="/contacts" onclick="toggleMobileMenu()">Контакты</a></li>
+        </ul>
+        <div class="mobile-contact-info">
+            <div>📍 Ростов-на-Дону</div>
+            <div>📞 +7 (___) ___-__-__</div>
+            <div>✉️ info@neostroy.net</div>
+            <div>🕒 Работаем с 2007 года</div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Профессиональное устройство промышленных полов</h1>
+                <p>Профессиональное устройство промышленных полов любой сложности. Собственное оборудование, опытные специалисты, гарантия качества.</p>
+                <div class="cta-buttons">
+                    <a href="/contacts" class="btn btn-primary">Получить консультацию</a>
+                    <a href="/portfolio" class="btn btn-secondary">Наши проекты</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">300 000+</div>
+                    <div class="stat-label">м² выполненных работ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1 500</div>
+                    <div class="stat-label">м² в смену</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">18+</div>
+                    <div class="stat-label">лет на рынке</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">гарантия качества</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему выбирают НеоСтрой</h2>
+                <p>Мы обеспечиваем полный цикл работ и индивидуальный подход к каждому проекту</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Современное оборудование</h3>
+                    <p>Собственный парк импортного оборудования для выполнения полного цикла работ по устройству промышленных полов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Безупречное качество</h3>
+                    <p>Работы выполняются высококвалифицированными специалистами с регулярным повышением квалификации</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Высокая скорость</h3>
+                    <p>Укладка до 1500 м² в смену благодаря отлаженным процессам и профессиональной команде</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Конкурентные цены</h3>
+                    <p>Самые низкие цены на рынке при соблюдении высочайших стандартов качества</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Надёжные партнёры</h3>
+                    <p>Сотрудничество с ведущими российскими и зарубежными производителями материалов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Полный цикл работ</h3>
+                    <p>Ремонт, демонтаж, подготовка основания, гидроизоляция, утепление, устройство лотков и приямков</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши услуги</h2>
+                <p>Комплексные решения для промышленного строительства</p>
+            </div>
+            <div class="services-list">
+                <div class="service-item">
+                    <h3>Бетонные полы</h3>
+                    <p>Устройство высокопрочных бетонных полов для промышленных объектов</p>
+                </div>
+                <div class="service-item">
+                    <h3>Полимерные покрытия</h3>
+                    <p>Наливные полимерные полы с повышенной химической стойкостью</p>
+                </div>
+                <div class="service-item">
+                    <h3>Топпинг-системы</h3>
+                    <p>Упрочнённые бетонные полы с топпинговым покрытием</p>
+                </div>
+                <div class="service-item">
+                    <h3>Подготовка оснований</h3>
+                    <p>Полный комплекс подготовительных работ перед устройством покрытия</p>
+                </div>
+                <div class="service-item">
+                    <h3>Ремонт полов</h3>
+                    <p>Восстановление и ремонт существующих промышленных покрытий</p>
+                </div>
+                <div class="service-item">
+                    <h3>Гидроизоляция</h3>
+                    <p>Надёжная защита от влаги и агрессивных сред</p>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="services.html" class="btn btn-primary">Все услуги</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Geography Section -->
+    <section class="geography">
+        <div class="container">
+            <div class="section-header">
+                <h2>География работы</h2>
+                <p>Выполняем проекты по всей России и странам СНГ</p>
+            </div>
+            <div class="geography-content">
+                <h3>Работа в регионах</h3>
+                <p>Строительная компания «НеоСтрой» предлагает услуги по устройству промышленных бетонных полов не только в Ростовской области, но и по всей европейской части России и ближнего зарубежья.</p>
+                <p>Наша мобильная бригада со всем необходимым оборудованием готова выполнить работы любой сложности в кратчайшие сроки.</p>
+                <div class="regions-list">
+                    <span class="region-tag">Ростовская область</span>
+                    <span class="region-tag">Краснодарский край</span>
+                    <span class="region-tag">Ставропольский край</span>
+                    <span class="region-tag">Волгоградская обл.</span>
+                    <span class="region-tag">Воронежская обл.</span>
+                    <span class="region-tag">Липецкая обл.</span>
+                    <span class="region-tag">Московская обл.</span>
+                    <span class="region-tag">Рязанская обл.</span>
+                    <span class="region-tag">Тульская обл.</span>
+                    <span class="region-tag">Курская обл.</span>
+                    <span class="region-tag">Орловская обл.</span>
+                    <span class="region-tag">Калужская обл.</span>
+                    <span class="region-tag">Страны СНГ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Готовы обсудить ваш проект?</h2>
+            <p>Свяжитесь с нами для получения консультации и расчёта стоимости</p>
+            <a href="/contacts" class="btn btn-primary">Связаться с нами</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>ООО «НеоСтрой» — профессиональное устройство промышленных полов с 2007 года. Качество, надёжность, проверенные временем.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="/portfolio">Наши работы</a></li>
+                        <li><a href="/catalog">Каталог продукции</a></li>
+                        <li><a href="/certificates">Сертификаты</a></li>
+                        <li><a href="/articles">Статьи</a></li>
+                        <li><a href="/news">Новости</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Ростов-на-Дону</li>
+                        <li>Телефон: +7 (___) ___-__-__</li>
+                        <li>Email: info@neostroy.net</li>
+                        <li>Режим работы: Пн-Пт 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Документы</h3>
+                    <ul>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Реквизиты компании</a></li>
+                        <li><a href="#">Договор оферты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2007-2026 ООО «НеоСтрой». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const mobileNav = document.getElementById('mobileNav');
+                if (mobileNav.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

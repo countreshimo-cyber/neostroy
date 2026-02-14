@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - НеоСтрой | Свяжитесь с нами</title>
+    <meta name="description" content="Контакты компании НеоСтрой в Ростове-на-Дону. Телефоны, адрес офиса, форма обратной связи. Работаем по всей России.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #24527A;
+            --secondary-color: #24527A;
+            --accent-color: #5499C7;
+            --text-dark: #24527A;
+            --text-light: #5499C7;
+            --bg-light: #EBF5FB;
+            --bg-lighter: #D4E6F1;
+            --white: #ffffff;
+            --border-color: #D4E6F1;
+            --gray: #5f6368;
+            --success: #4CAF50;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-top {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-main {
+            padding: 20px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .mobile-nav ul li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-nav ul li a {
+            display: block;
+            padding: 15px 0;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .mobile-contact-info {
+            padding: 20px;
+            background: var(--bg-light);
+            margin: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: var(--bg-light);
+            padding: 15px 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            color: #5f6368;
+            margin: 0 8px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contacts Section */
+        .contacts-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        /* Contact Info Cards */
+        .contact-cards {
+            display: grid;
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .contact-card-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 16px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .contact-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        .contact-form-wrapper h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-form-wrapper .form-subtitle {
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(84, 153, 199, 0.3);
+        }
+
+        .form-note {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Social Links */
+        .social-section {
+            background: var(--bg-light);
+            padding: 50px 0;
+        }
+
+        .social-section h2 {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .social-section .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 25px 15px;
+            background: var(--white);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-icon {
+            font-size: 40px;
+        }
+
+        .social-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+
+        .map-section h2 {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .map-section .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 450px;
+            background: var(--bg-lighter);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--gray);
+            border: 2px dashed var(--border-color);
+        }
+
+        /* Working Hours */
+        .hours-section {
+            background: var(--bg-light);
+            padding: 50px 0;
+        }
+
+        .hours-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hours-content h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .hours-content p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .hours-highlight {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .contact-form-wrapper {
+                padding: 25px;
+            }
+
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span>📍 Ростов-на-Дону</span>
+                    <span>📞 +7 (918) 531-43-02</span>
+                    <span>✉️ info@neostroy.net</span>
+                </div>
+                <div>Работаем с 2007 года</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">Нео<span>Строй</span></a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Открыть меню">☰</button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="portfolio.html">Наши работы</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="certificates.html">Сертификаты</a></li>
+                        <li><a href="articles.html">Статьи</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="contacts.html" class="active">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Нео<span>Строй</span></a>
+            <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Закрыть меню">×</button>
+        </div>
+        <ul>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Главная</a></li>
+            <li><a href="services.html" onclick="toggleMobileMenu()">Услуги</a></li>
+            <li><a href="portfolio.html" onclick="toggleMobileMenu()">Наши работы</a></li>
+            <li><a href="catalog.html" onclick="toggleMobileMenu()">Каталог</a></li>
+            <li><a href="certificates.html" onclick="toggleMobileMenu()">Сертификаты</a></li>
+            <li><a href="articles.html" onclick="toggleMobileMenu()">Статьи</a></li>
+            <li><a href="news.html" onclick="toggleMobileMenu()">Новости</a></li>
+            <li><a href="contacts.html" onclick="toggleMobileMenu()">Контакты</a></li>
+        </ul>
+        <div class="mobile-contact-info">
+            <div>📍 Ростов-на-Дону</div>
+            <div>📞 +7 (918) 531-43-02</div>
+            <div>✉️ info@neostroy.net</div>
+            <div>🕒 Работаем с 2007 года</div>
+        </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <strong>Контакты</strong>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Свяжитесь с нами</h1>
+            <p>Ответим на все ваши вопросы и подберём оптимальное решение для вашего объекта</p>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="contacts-section">
+        <div class="container">
+            <div class="contacts-grid">
+                <!-- Contact Info -->
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📞</div>
+                        <h3>Телефоны</h3>
+                        <p><a href="tel:+78632624015">+7 (863) 262-40-15</a> — офис</p>
+                        <p><a href="tel:+79185314302">+7 (918) 531-43-02</a> — моб.</p>
+                        <p><a href="tel:+79185639194">+7 (918) 563-91-94</a> — моб.</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">✉️</div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@neostroy.net">info@neostroy.net</a></p>
+                        <p>Ответим в течение 24 часов</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📍</div>
+                        <h3>Адрес офиса</h3>
+                        <p>344002, Ростов-на-Дону</p>
+                        <p>ул. Темерницкая, 41Б, офис 26</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">🌍</div>
+                        <h3>География работ</h3>
+                        <p>Работаем по всей России:</p>
+                        <p>Ростовская, Волгоградская, Воронежская, Липецкая, Московская области, Краснодарский и Ставропольский края, страны СНГ</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2>Оставить заявку на звонок</h2>
+                    <p class="form-subtitle">Заполните форму, и мы перезвоним вам в ближайшее время</p>
+                    
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" name="message" placeholder="Расскажите о вашем проекте..."></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Отправить заявку</button>
+                        
+                        <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-section">
+        <div class="container">
+            <h2>Мы в соцсетях и мессенджерах</h2>
+            <p class="subtitle">Выберите удобный способ связи</p>
+            
+            <div class="social-links">
+                <!-- Telegram: замените на https://t.me/ваш_username -->
+                <a href="#" class="social-link" data-social="telegram">
+                    <div class="social-icon">📱</div>
+                    <div class="social-name">Telegram</div>
+                </a>
+
+                <!-- WhatsApp: замените на https://wa.me/79185314302 -->
+                <a href="#" class="social-link" data-social="whatsapp">
+                    <div class="social-icon">💬</div>
+                    <div class="social-name">WhatsApp</div>
+                </a>
+
+                <!-- ВКонтакте: замените на https://vk.com/ваша_группа -->
+                <a href="#" class="social-link" data-social="vk">
+                    <div class="social-icon">🔵</div>
+                    <div class="social-name">ВКонтакте</div>
+                </a>
+
+                <!-- Max: замените на https://max.team/ваш_username или max://chat/ваш_username -->
+                <a href="#" class="social-link" data-social="max">
+                    <div class="social-icon">💬</div>
+                    <div class="social-name">Max</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Hours -->
+    <section class="hours-section">
+        <div class="container">
+            <div class="hours-content">
+                <h2>Режим работы</h2>
+                <p>Офис работает:</p>
+                <div class="hours-highlight">Понедельник — Пятница<br>9:00 — 18:00</div>
+                <p>Суббота, воскресенье — выходные</p>
+                <p style="margin-top: 20px; font-size: 15px;">Заявки принимаем круглосуточно через форму обратной связи</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Как нас найти</h2>
+            <p class="subtitle">Наш офис находится в центре Ростова-на-Дону</p>
+            
+            <div class="map-placeholder">
+                📍 Здесь будет интерактивная карта (Яндекс.Карты или Google Maps)
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>ООО «НеоСтрой» — профессиональное устройство промышленных полов с 2007 года. Качество, надёжность, проверенные временем.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="portfolio.html">Наши работы</a></li>
+                        <li><a href="catalog.html">Каталог продукции</a></li>
+                        <li><a href="certificates.html">Сертификаты</a></li>
+                        <li><a href="articles.html">Статьи</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Ростов-на-Дону</li>
+                        <li>ул. Темерницкая, 41Б, офис 26</li>
+                        <li>Телефон: +7 (918) 531-43-02</li>
+                        <li>Email: info@neostroy.net</li>
+                        <li>Режим работы: Пн-Пт 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Документы</h3>
+                    <ul>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Реквизиты компании</a></li>
+                        <li><a href="#">Договор оферты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2007-2026 ООО «НеоСтрой». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Здесь будет интеграция с Telegram ботом
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Form submitted:', formData);
+            
+            // Показываем сообщение об успешной отправке
+            alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
+            
+            // Очищаем форму
+            document.getElementById('contactForm').reset();
+            
+            // TODO: Интеграция с Telegram Bot API
+        }
+    </script>
+</body>
+</html>

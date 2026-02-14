@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог продукции - НеоСтрой | Оборудование для бетонных полов</title>
+    <meta name="description" content="Профессиональное оборудование для устройства промышленных бетонных полов: виброрейки, затирочные машины, инструмент.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #24527A;
+            --secondary-color: #24527A;
+            --accent-color: #5499C7;
+            --text-dark: #24527A;
+            --text-light: #5499C7;
+            --bg-light: #EBF5FB;
+            --bg-lighter: #D4E6F1;
+            --white: #ffffff;
+            --border-color: #D4E6F1;
+            --gray: #5f6368;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-top {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-main {
+            padding: 20px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .mobile-nav ul li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-nav ul li a {
+            display: block;
+            padding: 15px 0;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .mobile-contact-info {
+            padding: 20px;
+            background: var(--bg-light);
+            margin: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: var(--bg-light);
+            padding: 15px 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            color: #5f6368;
+            margin: 0 8px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Catalog Section */
+        .catalog-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-intro h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-intro p {
+            font-size: 17px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            background: var(--bg-light);
+            padding: 20px 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .category-header h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .category-header p {
+            font-size: 16px;
+            color: var(--gray);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: var(--bg-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '🔧';
+            font-size: 80px;
+            opacity: 0.2;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .product-link {
+            display: inline-block;
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .product-link:hover {
+            color: var(--primary-color);
+        }
+
+        .product-link::after {
+            content: ' →';
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #3d7ba8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(84, 153, 199, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-intro h2 {
+                font-size: 24px;
+            }
+
+            .category-header h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span>📍 Ростов-на-Дону</span>
+                    <span>📞 +7 (___) ___-__-__</span>
+                    <span>✉️ info@neostroy.net</span>
+                </div>
+                <div>Работаем с 2007 года</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">Нео<span>Строй</span></a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Открыть меню">☰</button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="portfolio.html">Наши работы</a></li>
+                        <li><a href="catalog.html" class="active">Каталог</a></li>
+                        <li><a href="certificates.html">Сертификаты</a></li>
+                        <li><a href="articles.html">Статьи</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Нео<span>Строй</span></a>
+            <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Закрыть меню">×</button>
+        </div>
+        <ul>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Главная</a></li>
+            <li><a href="services.html" onclick="toggleMobileMenu()">Услуги</a></li>
+            <li><a href="portfolio.html" onclick="toggleMobileMenu()">Наши работы</a></li>
+            <li><a href="catalog.html" onclick="toggleMobileMenu()">Каталог</a></li>
+            <li><a href="certificates.html" onclick="toggleMobileMenu()">Сертификаты</a></li>
+            <li><a href="articles.html" onclick="toggleMobileMenu()">Статьи</a></li>
+            <li><a href="news.html" onclick="toggleMobileMenu()">Новости</a></li>
+            <li><a href="contacts.html" onclick="toggleMobileMenu()">Контакты</a></li>
+        </ul>
+        <div class="mobile-contact-info">
+            <div>📍 Ростов-на-Дону</div>
+            <div>📞 +7 (___) ___-__-__</div>
+            <div>✉️ info@neostroy.net</div>
+            <div>🕒 Работаем с 2007 года</div>
+        </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <strong>Каталог продукции</strong>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Каталог оборудования</h1>
+            <p>Профессиональное оборудование для устройства промышленных бетонных полов. Собственный парк техники для любых задач.</p>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog-section">
+        <div class="container">
+            <!-- Category 1: Виброрейки -->
+            <div class="category-section">
+                <div class="category-header">
+                    <h3>Виброрейки</h3>
+                    <p>Плавающие виброрейки для выравнивания бетонной смеси</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Плавающая виброрейка Proscreed</h4>
+                            <p class="product-description">Профессиональная виброрейка для высококачественного выравнивания бетонных поверхностей на больших площадях.</p>
+                            <a href="catalog-proscreed.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Двухроторные затирочные машины -->
+            <div class="category-section">
+                <div class="category-header">
+                    <h3>Двухроторные затирочные машины</h3>
+                    <p>Мощные затирочные машины для обработки больших площадей</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen MP215</h4>
+                            <p class="product-description">Затирочная машина с механическим приводом для профессиональной обработки бетонных полов.</p>
+                            <a href="catalog-allen-mp215.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen MP235</h4>
+                            <p class="product-description">Производительная затирочная машина для работы на средних и больших площадях.</p>
+                            <a href="catalog-allen-mp235.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen MP315</h4>
+                            <p class="product-description">Высокопроизводительная затирочная машина для промышленного применения.</p>
+                            <a href="catalog-allen-mp315.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen MSP415</h4>
+                            <p class="product-description">Профессиональная затирочная машина премиум-класса для самых требовательных проектов.</p>
+                            <a href="catalog-allen-msp415.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Однороторные затирочные машины -->
+            <div class="category-section">
+                <div class="category-header">
+                    <h3>Однороторные затирочные машины</h3>
+                    <p>Компактные машины для работы в труднодоступных местах</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen 436 кромочник</h4>
+                            <p class="product-description">Специализированная машина для обработки краёв и углов помещений.</p>
+                            <a href="catalog-allen-436-edge.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen 436 с электроприводом</h4>
+                            <p class="product-description">Затирочная машина с электрическим двигателем для работы в закрытых помещениях.</p>
+                            <a href="catalog-allen-436-electric.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen 436</h4>
+                            <p class="product-description">Универсальная затирочная машина с механическим приводом.</p>
+                            <a href="catalog-allen-436.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen 436 эконом</h4>
+                            <p class="product-description">Экономичная модель затирочной машины с оптимальным соотношением цена-качество.</p>
+                            <a href="catalog-allen-436-econom.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Allen 430 кромочник</h4>
+                            <p class="product-description">Компактный кромочник для финишной обработки краёв.</p>
+                            <a href="catalog-allen-430-edge.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Lindec 424 кромочник</h4>
+                            <p class="product-description">Профессиональная машина для затирки краёв и труднодоступных участков.</p>
+                            <a href="catalog-lindec-424-edge.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 4: Диски и лопасти -->
+            <div class="category-section">
+                <div class="category-header">
+                    <h3>Диски и лопасти</h3>
+                    <p>Расходные материалы для затирочных машин</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Стальные диски и лопасти</h4>
+                            <p class="product-description">Высокопрочные стальные диски и лопасти для всех типов затирочных машин.</p>
+                            <a href="catalog-steel-blades.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Композитные диски Compodisk</h4>
+                            <p class="product-description">Современные композитные диски с улучшенными характеристиками и долговечностью.</p>
+                            <a href="catalog-compodisk.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 5: Распределительные тележки -->
+            <div class="category-section">
+                <div class="category-header">
+                    <h3>Распределительные тележки</h3>
+                    <p>Оборудование для равномерного распределения сухих смесей</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Распределительная тележка</h4>
+                            <p class="product-description">Профессиональная тележка для равномерного распределения топпинговых смесей по поверхности.</p>
+                            <a href="catalog-cart.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 6: Выравнивающие инструменты -->
+            <div class="category-section">
+                <div class="category-header">
+                    <h3>Выравнивающие ручные инструменты</h3>
+                    <p>Ручной инструмент для финишной обработки</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">«Шведская» гладилка</h4>
+                            <p class="product-description">Профессиональная гладилка для финишной обработки бетонной поверхности.</p>
+                            <a href="catalog-swedish-trowel.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Выглаживающая рейка</h4>
+                            <p class="product-description">Рейка для первичного выравнивания и выглаживания бетонной поверхности.</p>
+                            <a href="catalog-smoothing-rail.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Контрольная рейка</h4>
+                            <p class="product-description">Контрольная рейка для проверки плоскостности поверхности.</p>
+                            <a href="catalog-control-rail.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- Здесь будет изображение -->
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title">Корректирующая рейка</h4>
+                            <p class="product-description">Специализированная рейка для корректировки неровностей бетонной поверхности.</p>
+                            <a href="catalog-correction-rail.html" class="product-link">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Нужна консультация по оборудованию?</h2>
+            <p>Наши специалисты помогут подобрать оптимальное оборудование для вашего проекта</p>
+            <a href="contacts.html" class="btn btn-primary">Связаться с нами</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>ООО «НеоСтрой» — профессиональное устройство промышленных полов с 2007 года. Качество, надёжность, проверенные временем.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="portfolio.html">Наши работы</a></li>
+                        <li><a href="catalog.html">Каталог продукции</a></li>
+                        <li><a href="certificates.html">Сертификаты</a></li>
+                        <li><a href="articles.html">Статьи</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Ростов-на-Дону</li>
+                        <li>Телефон: +7 (___) ___-__-__</li>
+                        <li>Email: info@neostroy.net</li>
+                        <li>Режим работы: Пн-Пт 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Документы</h3>
+                    <ul>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Реквизиты компании</a></li>
+                        <li><a href="#">Договор оферты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2007-2026 ООО «НеоСтрой». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+</body>
+</html>
